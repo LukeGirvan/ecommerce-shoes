@@ -5,10 +5,12 @@
   "type": "module",
   "scripts": {
     "homepage": "https://lukegirvan.github.io/ecommerce-display/",
-    "dev": "vite --host",
+    "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy" : "gh-pages -d dist"
+
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
