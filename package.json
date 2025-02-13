@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "homepage": "https://lukegirvan.github.io/ecommerce-display/",
+    "homepage": "https://lukegirvan.github.io/ecommerce-shoes/",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
