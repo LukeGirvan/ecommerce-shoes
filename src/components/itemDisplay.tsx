@@ -18,10 +18,10 @@ function ItemDisplay(){
     const {addItem} = useCart()
 
     const images = useMemo(() =>{
-        return[{thumbnailSrc:'/assets/image-product-1-thumbnail.jpg',bigSrc:'/assets/image-product-1.jpg'},
-            {thumbnailSrc:'/assets/image-product-2-thumbnail.jpg',bigSrc:'/assets/image-product-2.jpg'},
-            {thumbnailSrc:'/assets/image-product-3-thumbnail.jpg',bigSrc:'/assets/image-product-3.jpg'},
-            {thumbnailSrc:'/assets/image-product-4-thumbnail.jpg',bigSrc:'/assets/image-product-4.jpg'}]
+        return[{thumbnailSrc:'/ecommerce-shoes/assets/image-product-1-thumbnail.jpg',bigSrc:'/ecommerce-shoes/assets/image-product-1.jpg'},
+            {thumbnailSrc:'/ecommerce-shoes/assets/image-product-2-thumbnail.jpg',bigSrc:'/ecommerce-shoes/assets/image-product-2.jpg'},
+            {thumbnailSrc:'/ecommerce-shoes/assets/image-product-3-thumbnail.jpg',bigSrc:'/ecommerce-shoes/assets/image-product-3.jpg'},
+            {thumbnailSrc:'/ecommerce-shoes/assets/image-product-4-thumbnail.jpg',bigSrc:'/ecommerce-shoes/assets/image-product-4.jpg'}]
     }
       ,[])
 
