@@ -1,0 +1,143 @@
+@use 'mixins' as mixin;
+
+html, body{
+    height: 100%;
+}
+
+@keyframes fadeIn {
+    from{
+        display: none;
+        opacity: 0;
+    }
+    to{
+        display: flex;
+        opacity: 1;
+    }
+    
+}
+
+@keyframes fadeOut {
+    from{
+        display: flex;
+        opacity: 1;
+    }
+    to{
+        display: none;
+        opacity: 0;
+    }
+    
+}
+.fade-in{
+    animation: 0.3s fadeIn ease-in-out;
+}
+.fade-out{
+    animation: 0.3s fadeOut ease-in-out;
+}
+
+
+
+
+@media (min-width:1200px){
+   .gallery-modal{
+    position: absolute;
+    width: 100%;
+    height: 154%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 15;
+  
+    @include mixin.center-flex-column();
+    align-items: center;
+    .big-image-holder{
+        width: 33%;
+        min-width: 500px;
+        max-width: 510px;
+        @include mixin.center-flex-column();
+        gap: 3rem;
+        position: absolute;
+        top: 2%;
+        left:30%;
+        // margin-top: ;
+        .previous,.next{
+            padding:1rem 1.3rem;
+            border-radius: 50%;
+            background-color: white;
+            position: absolute;
+            top: 40%;
+            display:  flex;
+        }
+        .previous.hidden,.next.hidden{
+            display: none;
+        }
+        .previous{
+            left: 1%;
+        }
+        .next{
+            right: 1%;
+        }
+        .big-image{
+            border-radius: 10px;
+        }
+    }
+    .small-images-holder{
+        @include mixin.flex-row();
+        gap: 2rem;
+        position: relative;
+        .small-image-holder{
+            position: relative;
+            width: 25%;
+            
+            .small-image{
+                cursor: pointer;
+                width: 100%;
+                height: 100%;
+                border-radius: 10px;
+                position: relative;
+            }
+        
+        }
+        .small-image-holder.selected::before{
+            box-sizing: border-box;
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255,255,255,0.7);
+            z-index: 2;
+            border: 2px solid orange;
+            border-radius: 10px;
+        }
+      
+    }
+      
+       
+    
+    .close-button-holder{
+        position: absolute;
+        right: 3%;    
+        top: 10%;   
+        .close-button{
+            background: none;
+            color: orange;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+
+        }
+    }
+   }
+   .gallery-modal.hidden{
+    display:none;
+   }
+}
+@media (min-width:769px) and (max-width:1200px){
+    .gallery-modal{
+        display: none;
+    }
+}
+@media (max-width:769px){
+    .gallery-modal{
+        display: none;
+    }
+}

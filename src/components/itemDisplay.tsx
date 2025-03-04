@@ -1,7 +1,6 @@
 import addIcon from '/assets/icon-plus.svg'
 import minusIcon from '/assets/icon-minus.svg'
-import prevIcon from '/assets/icon-previous.svg'
-import nextIcon from '/assets/icon-next.svg'
+import Gallery from './gallery'
 import cart from '/assets/icon-cart.svg'
 import {useState, useMemo} from 'react'
 import '../styles/itemholder.scss'
@@ -9,11 +8,11 @@ import '../styles/global.scss'
 import { useCart } from '../hooks/useCart'
 import {Alert, Snackbar} from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
+import GalleryModal from './galleryModal'
 
 
 function ItemDisplay(){
     const [quantity, setQuantity] = useState(1)
-    const [selectedIndex, setSelectedIndex] = useState(0)
     const [open,setOpen] = useState(false);
     const {addItem} = useCart()
 
@@ -35,17 +34,13 @@ function ItemDisplay(){
         }
     }
 
-    const decreaseIndex = () =>{
-        if(selectedIndex>=1){
-            setSelectedIndex(selectedIndex-1)
-        }
-    }
-    const increaseIndex = () =>{
-        if(selectedIndex<=2){
-            setSelectedIndex(selectedIndex+1)
-        }
-    }
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
+    // Function to open the modal
+    const openModal = () => setIsModalOpen(true);
+
+    // Function to close the modal
+    const closeModal = () => setIsModalOpen(false);
     
         const createItem = () =>{
             const product ={
@@ -80,32 +75,12 @@ function ItemDisplay(){
 
     return(
     <div className="mid-section">
+        <GalleryModal />
     <div className="item-holder">
-        <div className="big-image-holder">
-            <span className={`previous ${selectedIndex===0? 'hidden': ''}`} onClick={decreaseIndex}>
-                <img src={prevIcon} alt="" className="prev-arrow" />
-            </span>
-            <img src={images[selectedIndex].bigSrc}alt="" className="big-image" />
-            <span className={`next ${selectedIndex===3? 'hidden': ''}`}onClick={increaseIndex}>
-            <img src={nextIcon}  alt="" className="next-arrow" />
-            </span>
-            <div className="small-images-holder">
-                {images.map((image, index) => (
-                    <div className={`small-image-holder ${selectedIndex === index ? "selected" : ""}`}>
-                        <img
-                        key={index}
-                        src={image.thumbnailSrc}
-                        className={`small-image`}
-                        onClick={() => setSelectedIndex(index)} // Set the selected index on click
-                        alt={`Thumbnail ${index + 1}`}
-                    />
-                    </div>
-                    
-                ))}
-                </div>
-            </div>
+    <Gallery images={images} />
         
         <div className="details">
+            
                     <h2 className="small-title">
                         SNEAKER COMPANY
                     </h2>
